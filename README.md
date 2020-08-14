@@ -1,2 +1,3 @@
 # weather-forecast
-![alt text] (src/assets/screen1.jpg)
+![alt text](screen1.jpg)
+![alt text](screen2.jpg)
