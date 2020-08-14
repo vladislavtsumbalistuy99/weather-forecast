@@ -1,10 +1,17 @@
 import React, { Component } from "react";
-import { View, ScrollView, Text, Button } from "react-native";
+import {
+  View,
+  ScrollView,
+  Text,
+  Button,
+  StyleSheet,
+  Image,
+} from "react-native";
 import { SearchBar } from "react-native-elements";
 
 export default class SearchScreen extends React.Component {
   state = {
-    search: "",
+    search: "Kyiv",
     weatherData: {},
     isLoading: false,
   };
@@ -34,7 +41,7 @@ export default class SearchScreen extends React.Component {
       .catch((error) => {
         console.error(error);
       });
-  }
+  };
 
   render() {
     const { search } = this.state;
@@ -49,16 +56,45 @@ export default class SearchScreen extends React.Component {
         />
         <Button title="Search" onPress={this.findWeatherByCity} />
 
-        {this.state.isLoading ? (
-          this.state.weatherData.list.map((data)=>{
-            return(
-              <View><Text>{data.main.temp}</Text></View>
-            )
-          })
-        ) : (
-          <Text>{this.state.search}</Text>
-        )}
+        {this.state.isLoading
+          ? this.state.weatherData.list.map((data, index) => {
+              return (
+                <View style={styles.container}>
+                  <View>
+                    <Text style={styles.text}>Weather in {index + 1} day:</Text>
+                    <Text style={styles.text}>
+                      {Math.round(data.main.temp)} degrees Celsius
+                    </Text>
+                  </View>
+                  <Image
+                    style={styles.tinyLogo}
+                    source={require("../../assets/Sunny.png")}
+                  />
+                </View>
+              );
+            })
+          : null}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#00bfff",
+    marginTop: 10,
+    fontSize: 24,
+    height: 61,
+    flexDirection:'row',
+    justifyContent: 'space-between',
+    alignItems:'center'
+  },
+  text: {
+    color: "#ffff",
+    margin: 7,
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
+  },
+});
