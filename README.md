@@ -1,2 +1,2 @@
 # weather-forecast
-![alt text] (screen1.jpeg)
+![alt text] (screen1.jpg)
