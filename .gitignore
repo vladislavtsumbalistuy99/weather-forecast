@@ -4,7 +4,9 @@
 
 # Xcode
 #
-build/
+generated/
+intermediates/
+tmp/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
