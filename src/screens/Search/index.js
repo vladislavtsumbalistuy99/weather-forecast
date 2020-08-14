@@ -62,7 +62,7 @@ export default class SearchScreen extends React.Component {
                 <View style={styles.container}>
                   <View>
                     <Text style={styles.text}>Weather in {index + 1} day:</Text>
-                    <Text style={styles.text}>
+                    <Text style={styles.text} key={index}>
                       {Math.round(data.main.temp)} degrees Celsius
                     </Text>
                   </View>
